@@ -16,7 +16,7 @@ export function About() {
             />
             <div className="hover-lift relative overflow-hidden rounded-3xl border-2 border-border/80 bg-card p-3 shadow-2xl">
               <Image
-                src={profile.photo}
+                src={profile.headshot}
                 alt={`${profile.name} — DevOps and Cloud Engineer`}
                 width={480}
                 height={480}

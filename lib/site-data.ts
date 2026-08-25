@@ -8,6 +8,7 @@ export const profile = {
   linkedin: 'https://linkedin.com/in/mayankthakur1',
   github: 'https://github.com/itzmayank01',
   photo: '/profile.jpg',
+  headshot: '/mayank.png',
   summary:
     'I design and automate end-to-end delivery pipelines — from containerized builds and infrastructure-as-code to security scanning and production observability. AWS Certified Solutions Architect focused on shipping fast without breaking things.',
 }
