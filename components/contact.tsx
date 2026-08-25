@@ -21,7 +21,7 @@ export function Contact() {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-sky-500/20 blur-[100px]"
+            className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-indigo-500/20 blur-[100px]"
           />
 
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">

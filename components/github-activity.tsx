@@ -167,7 +167,7 @@ export function GithubActivity() {
 
             <div className="hover-lift rounded-2xl border border-border/80 bg-card/70 backdrop-blur p-3.5 text-center">
               <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground font-medium">
-                <Trophy className="h-3.5 w-3.5 text-sky-400" />
+                <Trophy className="h-3.5 w-3.5 text-violet-400" />
                 <span>Longest</span>
               </div>
               <p className="mt-1 font-display text-xl sm:text-2xl font-black text-foreground">
