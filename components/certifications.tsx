@@ -10,9 +10,6 @@ export function Certifications() {
         <Reveal className="rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl p-8 sm:p-12 shadow-2xl">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="font-mono text-xs uppercase font-bold tracking-widest text-primary">
-                Credentials
-              </p>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
                 Official <span className="text-primary">Certifications</span>
               </h2>

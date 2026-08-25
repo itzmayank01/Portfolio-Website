@@ -134,9 +134,6 @@ export function GithubActivity() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
-              Open Source
-            </p>
             <h2 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold tracking-tight">
               GitHub <span className="text-primary">Contributions</span>
             </h2>

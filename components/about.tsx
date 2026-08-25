@@ -36,9 +36,6 @@ export function About() {
 
           {/* Right Copy */}
           <Reveal delay={100}>
-            <p className="font-mono text-xs uppercase font-bold tracking-widest text-primary">
-              About Me
-            </p>
             <h2 className="mt-3 font-display text-3xl sm:text-5xl font-black tracking-tight text-foreground">
               Automating workflows into{' '}
               <span className="text-primary">reliable cloud systems</span>.

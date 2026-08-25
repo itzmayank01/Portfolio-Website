@@ -22,9 +22,6 @@ export function Contact() {
           />
 
           <div className="relative text-center">
-            <p className="font-mono text-xs uppercase font-bold tracking-widest text-primary">
-              Get in touch
-            </p>
 
             <h2 className="mx-auto mt-5 max-w-2xl font-display text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
               Have a pipeline to automate or a cloud to scale?

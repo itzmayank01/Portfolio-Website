@@ -7,9 +7,6 @@ export function ExperienceSection() {
     <section id="experience" className="px-4 py-20 sm:py-28">
       <div className="mx-auto max-w-4xl">
         <Reveal className="max-w-2xl">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
-            Experience
-          </p>
           <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Where I&apos;ve shipped
           </h2>

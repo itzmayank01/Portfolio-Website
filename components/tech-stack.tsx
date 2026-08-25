@@ -75,9 +75,6 @@ export function TechStack() {
     <section id="stack" className="px-4 py-20 sm:py-28 relative">
       <div className="mx-auto max-w-6xl">
         <Reveal className="max-w-2xl">
-          <p className="font-mono text-xs uppercase font-bold tracking-widest text-primary">
-            Technology Stack
-          </p>
           <h2 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
             Production <span className="text-primary">Cloud Stack</span>
           </h2>

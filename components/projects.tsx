@@ -93,11 +93,6 @@ export function Projects() {
         {/* Top Header matching reference Image 2 */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <Reveal>
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
-                Work Process
-              </span>
-            </div>
             <h2 className="mt-2 font-display text-4xl sm:text-6xl font-black tracking-tight text-foreground">
               Featured <span className="text-primary">Projects</span>
             </h2>
@@ -178,7 +173,7 @@ export function Projects() {
                   {/* Right Content */}
                   <div className={`lg:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs uppercase font-bold tracking-widest text-primary">
+                      <span className="font-mono text-xs uppercase font-bold tracking-widest text-muted-foreground">
                         {project.category}
                       </span>
                       <span className="rounded-full bg-emerald-500/15 px-3 py-0.5 text-xs font-bold text-emerald-500 border border-emerald-500/30">
