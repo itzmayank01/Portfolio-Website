@@ -221,6 +221,34 @@
   }
 }
 
+/*
+ * Whole-page aurora background — slowly drifting, heavily blurred color blobs.
+ * Kept subtle (low opacity) so content stays readable; pure CSS, no video.
+ */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate3d(-8%, -6%, 0) scale(1); }
+  50%      { transform: translate3d(12%, 8%, 0) scale(1.25); }
+}
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate3d(10%, -4%, 0) scale(1.1); }
+  50%      { transform: translate3d(-10%, 10%, 0) scale(0.95); }
+}
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate3d(-6%, 8%, 0) scale(1); }
+  50%      { transform: translate3d(8%, -8%, 0) scale(1.2); }
+}
+.animate-aurora-1 { animation: aurora-drift-1 24s ease-in-out infinite; }
+.animate-aurora-2 { animation: aurora-drift-2 30s ease-in-out infinite; }
+.animate-aurora-3 { animation: aurora-drift-3 27s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3 {
+    animation: none;
+  }
+}
+
 @keyframes float-slow {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
