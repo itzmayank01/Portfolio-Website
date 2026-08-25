@@ -22,7 +22,7 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-20 top-40 h-96 w-96 rounded-full bg-indigo-500/15 blur-[120px]"
+        className="pointer-events-none absolute -right-20 top-40 h-96 w-96 rounded-full bg-sky-500/15 blur-[120px]"
       />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
@@ -91,11 +91,11 @@ export function Hero() {
             {/* SVG Organic Backdrop Blob */}
             <div
               aria-hidden
-              className="absolute inset-0 -z-10 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-gradient-to-tr from-primary/30 via-indigo-500/20 to-purple-600/30 blur-xl animate-pulse-slow"
+              className="absolute inset-0 -z-10 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-gradient-to-tr from-primary/30 via-sky-500/20 to-indigo-500/30 blur-xl animate-pulse-slow"
             />
             <div
               aria-hidden
-              className="absolute inset-2 -z-10 rounded-[50%_50%_40%_60%/60%_40%_60%_40%] bg-gradient-to-br from-primary/30 to-indigo-500/30 shadow-2xl backdrop-blur-3xl border border-primary/20"
+              className="absolute inset-2 -z-10 rounded-[50%_50%_40%_60%/60%_40%_60%_40%] bg-gradient-to-br from-primary/30 to-sky-500/30 shadow-2xl backdrop-blur-3xl border border-primary/20"
             />
 
             {/* Profile Image Cutout */}

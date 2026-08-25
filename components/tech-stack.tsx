@@ -35,8 +35,8 @@ const TECH_CATEGORIES: TechCategory[] = [
   {
     category: 'Containers & Orchestration',
     icon: Boxes,
-    color: 'from-violet-500/20 to-indigo-500/10',
-    borderColor: 'group-hover:border-violet-500/50',
+    color: 'from-sky-500/20 to-blue-500/10',
+    borderColor: 'group-hover:border-sky-500/50',
     items: [
       { name: 'Kubernetes (K8s)', tag: 'Advanced', logo: '/logos/kubernetes.svg' },
       { name: 'Docker Containers', tag: 'Expert', logo: '/logos/docker.svg' },
