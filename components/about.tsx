@@ -20,7 +20,7 @@ export function About() {
                 alt={`${profile.name} — DevOps and Cloud Engineer`}
                 width={480}
                 height={480}
-                className="aspect-square w-full rounded-2xl object-cover object-top"
+                className="aspect-square w-full rounded-2xl object-cover object-center"
               />
               <div className="mt-3 flex items-center justify-between px-2">
                 <div>

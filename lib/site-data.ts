@@ -7,7 +7,7 @@ export const profile = {
   phone: '+91 90151 56775',
   linkedin: 'https://linkedin.com/in/mayankthakur1',
   github: 'https://github.com/itzmayank01',
-  photo: '/mayank.png',
+  photo: '/profile.jpg',
   summary:
     'I design and automate end-to-end delivery pipelines — from containerized builds and infrastructure-as-code to security scanning and production observability. AWS Certified Solutions Architect focused on shipping fast without breaking things.',
 }

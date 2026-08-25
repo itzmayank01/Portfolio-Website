@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { ArrowUpRight, MapPin, ShieldCheck, Terminal } from 'lucide-react'
-import { GithubIcon, LinkedinIcon, AwsIcon } from '@/components/brand-icons'
+import { ArrowUpRight, MapPin } from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 import { profile } from '@/lib/site-data'
 
 export function Hero() {
@@ -84,7 +84,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Person Cutout + Organic Blob Backdrop + Floating Badges */}
+        {/* Right Column: Person Photo + Organic Blob Backdrop */}
         <div className="relative flex items-center justify-center lg:justify-end">
           {/* Organic Background Blob */}
           <div className="relative h-[380px] w-[320px] sm:h-[450px] sm:w-[380px]">
@@ -105,42 +105,9 @@ export function Hero() {
                 alt={`${profile.name} portrait`}
                 fill
                 priority
-                className="object-cover object-top scale-105 transition-transform duration-700 hover:scale-110"
+                className="object-cover object-center scale-105 transition-transform duration-700 hover:scale-110"
               />
               <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background via-background/40 to-transparent" />
-            </div>
-
-            {/* Floating Glassmorphism Badge 1: 99.9% Uptime */}
-            <div className="absolute -left-6 top-10 animate-float rounded-2xl border border-border/80 bg-card/90 backdrop-blur-xl p-3.5 shadow-2xl">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/15 text-emerald-500">
-                  <ShieldCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-display text-sm font-bold text-foreground">99.99% Uptime</p>
-                  <p className="text-[11px] text-muted-foreground font-semibold">Reliable Infrastructure</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Glassmorphism Badge 2: AWS Certified */}
-            <div className="absolute -right-6 bottom-16 animate-float [animation-delay:2s] rounded-2xl border border-border/80 bg-card/90 backdrop-blur-xl p-3.5 shadow-2xl">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/20 text-primary">
-                  <AwsIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <p className="font-display text-sm font-bold text-foreground">AWS Certified</p>
-                  <p className="text-[11px] text-muted-foreground font-semibold">Solutions Architect</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute left-8 -bottom-5 animate-float [animation-delay:4s] rounded-2xl border border-border/80 bg-card/90 backdrop-blur-xl px-4 py-2.5 shadow-2xl">
-              <div className="flex items-center gap-2">
-                <Terminal className="h-4 w-4 text-primary" />
-                <span className="font-display text-xs font-bold text-foreground">50+ CI/CD Pipelines Shipped</span>
-              </div>
             </div>
           </div>
         </div>

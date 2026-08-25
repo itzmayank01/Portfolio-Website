@@ -17,11 +17,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <GithubActivity />
         <TechMarquee />
         <About />
         <TechStack />
         <Projects />
-        <GithubActivity />
         <ExperienceSection />
         <Certifications />
         <AwsFeedback />
