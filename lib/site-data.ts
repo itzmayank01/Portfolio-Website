@@ -13,6 +13,15 @@ export const profile = {
     'I design and automate end-to-end delivery pipelines — from containerized builds and infrastructure-as-code to security scanning and production observability. AWS Certified Solutions Architect focused on shipping fast without breaking things.',
 }
 
+// Config for the contact/social CTA bar and AWS certifications section.
+// Email + LinkedIn URL live on `profile` above; referenced from components, never hardcoded.
+export const social = {
+  linkedinFollowers: '20K+',
+  linkedinFollowersLabel: 'engineers following',
+  resumePath: '/resume/Mayank-Thakur-Resume.pdf',
+  jacketImage: '/images/aws-golden-jacket.svg',
+}
+
 export const stats = [
   { value: '85%', label: 'Fewer security vulnerabilities' },
   { value: '50%', label: 'Faster CI/CD pipelines' },

@@ -8,7 +8,9 @@ import { Projects } from '@/components/projects'
 import { GithubActivity } from '@/components/github-activity'
 import { ExperienceSection } from '@/components/experience'
 import { Certifications } from '@/components/certifications'
+import { AwsCertifications } from '@/components/aws-certifications'
 import { AwsFeedback } from '@/components/aws-feedback'
+import { SocialCta } from '@/components/social-cta'
 import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
 
@@ -26,7 +28,9 @@ export default function Home() {
         <Projects />
         <ExperienceSection />
         <Certifications />
+        <AwsCertifications />
         <AwsFeedback />
+        <SocialCta />
         <Contact />
       </main>
       <Footer />
