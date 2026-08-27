@@ -164,6 +164,7 @@ export const projects: Project[] = [
     status: 'Open Source',
     description:
       'End-to-end CI/CD on Amazon EKS with GitHub Actions — automated build, security scanning and production deploy on every merge. Cut pipeline time by 50% with self-hosted runners.',
+    image: '/projects/eks-3tier.png',
     device: 'laptop',
     browserUrl: 'github.com/itzmayank01',
     tech: ['AWS EKS', 'GitHub Actions', 'Trivy', 'SonarQube', 'ALB', 'Route 53'],
