@@ -5,6 +5,7 @@ import { ArrowUpRight, MapPin, FileText } from 'lucide-react'
 import { GithubIcon } from '@/components/brand-icons'
 import { profile, social } from '@/lib/site-data'
 import { withBasePath } from '@/lib/base-path'
+import { ContactButtons } from '@/components/contact-buttons'
 
 export function Hero() {
   return (
@@ -84,8 +85,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Person Photo + Organic Blob Backdrop */}
-        <div className="relative flex items-center justify-center lg:justify-end">
+        {/* Right Column: Person Photo + contact buttons */}
+        <div className="relative flex flex-col items-center gap-7 lg:items-end">
           {/* Organic Background Blob */}
           <div className="relative h-[380px] w-[320px] sm:h-[450px] sm:w-[380px]">
             {/* SVG Organic Backdrop Blob */}
@@ -109,6 +110,9 @@ export function Hero() {
               />
             </div>
           </div>
+
+          {/* Contact buttons under the photo */}
+          <ContactButtons className="w-full max-w-[440px] lg:justify-end" />
         </div>
       </div>
     </section>
