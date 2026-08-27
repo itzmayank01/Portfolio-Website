@@ -94,10 +94,10 @@ export function Footer() {
                       href={link.href}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
-                      className="text-xs text-slate-400 hover:text-primary transition-colors flex items-center gap-1"
+                      className="text-xs text-slate-400 hover:text-primary transition-colors flex items-start gap-1 min-w-0"
                     >
-                      <span>{link.label}</span>
-                      {link.external && <ArrowUpRight className="h-3 w-3 opacity-60" />}
+                      <span className="break-all">{link.label}</span>
+                      {link.external && <ArrowUpRight className="h-3 w-3 shrink-0 opacity-60 mt-0.5" />}
                     </a>
                   </li>
                 ))}

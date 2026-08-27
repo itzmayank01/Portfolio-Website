@@ -147,44 +147,44 @@ export function GithubActivity() {
           </Reveal>
 
           {/* Quick Metrics (live) */}
-          <Reveal delay={100} className="flex gap-3 sm:gap-4">
-            <div className="hover-lift flex items-center gap-3 rounded-xl border border-border/80 bg-card/70 backdrop-blur px-4 py-3 shadow-sm">
-              <div className="grid h-9 w-9 shrink-0 place-items-center text-lg leading-none">
+          <Reveal delay={100} className="grid grid-cols-3 gap-2 sm:flex sm:gap-4">
+            <div className="hover-lift flex items-center gap-1.5 sm:gap-3 min-w-0 overflow-hidden rounded-xl border border-border/80 bg-card/70 backdrop-blur px-2 sm:px-4 py-3 shadow-sm">
+              <div className="grid h-7 w-7 sm:h-9 sm:w-9 shrink-0 place-items-center text-base sm:text-lg leading-none">
                 <span aria-hidden>📈</span>
               </div>
-              <div>
-                <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                   Total
                 </p>
-                <p className="font-display text-lg sm:text-xl font-bold text-foreground tabular-nums">
+                <p className="font-display text-base sm:text-xl font-bold text-foreground tabular-nums whitespace-nowrap">
                   {formatCount(total)}
                 </p>
               </div>
             </div>
 
-            <div className="hover-lift flex items-center gap-3 rounded-xl border border-border/80 bg-card/70 backdrop-blur px-4 py-3 shadow-sm">
-              <div className="grid h-9 w-9 shrink-0 place-items-center text-lg leading-none">
+            <div className="hover-lift flex items-center gap-1.5 sm:gap-3 min-w-0 overflow-hidden rounded-xl border border-border/80 bg-card/70 backdrop-blur px-2 sm:px-4 py-3 shadow-sm">
+              <div className="grid h-7 w-7 sm:h-9 sm:w-9 shrink-0 place-items-center text-base sm:text-lg leading-none">
                 <span aria-hidden>🔥</span>
               </div>
-              <div>
-                <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                   Streak
                 </p>
-                <p className="font-display text-lg sm:text-xl font-bold text-foreground tabular-nums">
+                <p className="font-display text-base sm:text-xl font-bold text-foreground tabular-nums whitespace-nowrap">
                   {days ? `${stats.current} Days` : '—'}
                 </p>
               </div>
             </div>
 
-            <div className="hover-lift flex items-center gap-3 rounded-xl border border-border/80 bg-card/70 backdrop-blur px-4 py-3 shadow-sm">
-              <div className="grid h-9 w-9 shrink-0 place-items-center text-lg leading-none">
+            <div className="hover-lift flex items-center gap-1.5 sm:gap-3 min-w-0 overflow-hidden rounded-xl border border-border/80 bg-card/70 backdrop-blur px-2 sm:px-4 py-3 shadow-sm">
+              <div className="grid h-7 w-7 sm:h-9 sm:w-9 shrink-0 place-items-center text-base sm:text-lg leading-none">
                 <span aria-hidden>🏆</span>
               </div>
-              <div>
-                <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                   Longest
                 </p>
-                <p className="font-display text-lg sm:text-xl font-bold text-foreground tabular-nums">
+                <p className="font-display text-base sm:text-xl font-bold text-foreground tabular-nums whitespace-nowrap">
                   {days ? `${stats.longest} Days` : '—'}
                 </p>
               </div>
