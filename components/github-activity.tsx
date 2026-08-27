@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-import { GitCommit, Flame, Calendar, Trophy } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { profile } from '@/lib/site-data'
 
@@ -144,35 +144,47 @@ export function GithubActivity() {
           </Reveal>
 
           {/* Quick Metrics (live) */}
-          <Reveal delay={100} className="grid grid-cols-3 gap-3 sm:gap-4">
-            <div className="hover-lift rounded-2xl border border-border/80 bg-card/70 backdrop-blur p-3.5 text-center">
-              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground font-medium">
-                <GitCommit className="h-3.5 w-3.5 text-emerald-500" />
-                <span>Total</span>
+          <Reveal delay={100} className="flex gap-3 sm:gap-4">
+            <div className="hover-lift flex items-center gap-3 rounded-xl border border-border/80 bg-card/70 backdrop-blur px-4 py-3 shadow-sm">
+              <div className="grid h-9 w-9 shrink-0 place-items-center text-lg leading-none">
+                <span aria-hidden>📈</span>
               </div>
-              <p className="mt-1 font-display text-xl sm:text-2xl font-black text-foreground">
-                {formatCount(total)}
-              </p>
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                  Total
+                </p>
+                <p className="font-display text-lg sm:text-xl font-bold text-foreground tabular-nums">
+                  {formatCount(total)}
+                </p>
+              </div>
             </div>
 
-            <div className="hover-lift rounded-2xl border border-border/80 bg-card/70 backdrop-blur p-3.5 text-center">
-              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground font-medium">
-                <Flame className="h-3.5 w-3.5 text-amber-500" />
-                <span>Streak</span>
+            <div className="hover-lift flex items-center gap-3 rounded-xl border border-border/80 bg-card/70 backdrop-blur px-4 py-3 shadow-sm">
+              <div className="grid h-9 w-9 shrink-0 place-items-center text-lg leading-none">
+                <span aria-hidden>🔥</span>
               </div>
-              <p className="mt-1 font-display text-xl sm:text-2xl font-black text-foreground">
-                {days ? `${stats.current} Days` : '—'}
-              </p>
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                  Streak
+                </p>
+                <p className="font-display text-lg sm:text-xl font-bold text-foreground tabular-nums">
+                  {days ? `${stats.current} Days` : '—'}
+                </p>
+              </div>
             </div>
 
-            <div className="hover-lift rounded-2xl border border-border/80 bg-card/70 backdrop-blur p-3.5 text-center">
-              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground font-medium">
-                <Trophy className="h-3.5 w-3.5 text-sky-400" />
-                <span>Longest</span>
+            <div className="hover-lift flex items-center gap-3 rounded-xl border border-border/80 bg-card/70 backdrop-blur px-4 py-3 shadow-sm">
+              <div className="grid h-9 w-9 shrink-0 place-items-center text-lg leading-none">
+                <span aria-hidden>🏆</span>
               </div>
-              <p className="mt-1 font-display text-xl sm:text-2xl font-black text-foreground">
-                {days ? `${stats.longest} Days` : '—'}
-              </p>
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                  Longest
+                </p>
+                <p className="font-display text-lg sm:text-xl font-bold text-foreground tabular-nums">
+                  {days ? `${stats.longest} Days` : '—'}
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

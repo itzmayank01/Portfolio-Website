@@ -29,7 +29,7 @@ export function Hero() {
         {/* Left Column: Bold Copy & CTAs */}
         <div className="z-10">
           {/* Main Bold Headline */}
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-[64px] font-black leading-[1.08] tracking-tight text-balance text-foreground">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-[64px] font-black leading-[1.08] tracking-tight text-balance text-foreground">
             Building Resilient{' '}
             <span className="text-primary">Cloud &amp; DevOps</span>{' '}
             Infrastructure

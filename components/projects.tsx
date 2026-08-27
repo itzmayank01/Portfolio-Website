@@ -7,44 +7,85 @@ import { Reveal } from '@/components/reveal'
 import { GithubIcon } from '@/components/brand-icons'
 import { projects, profile, type Project } from '@/lib/site-data'
 
+function ScreenContent({ project }: { project: Project }) {
+  if (!project.image) {
+    return (
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0d1117]">
+        <GithubIcon className="h-14 w-14 text-slate-100" />
+        <span className="font-mono text-[11px] text-slate-400">
+          {project.browserUrl ?? 'View source on GitHub'}
+        </span>
+      </div>
+    )
+  }
+
+  return (
+    <Image
+      src={project.image}
+      alt={`${project.title} screenshot`}
+      fill
+      className="object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+  )
+}
+
 function Laptop3DMockup({ project }: { project: Project }) {
   return (
-    <div className="w-full [perspective:1400px]">
-      <div className="group relative mx-auto transition-all duration-700 ease-out [transform:rotateX(6deg)rotateY(-10deg)] hover:[transform:rotateX(0deg)rotateY(0deg)] hover:scale-105">
-        {/* Laptop Top Lid */}
-        <div className="rounded-t-2xl border-2 border-b-0 border-slate-700 bg-slate-900 p-2 shadow-2xl">
-          {/* Browser Bar */}
-          <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/80 px-3 py-1.5 rounded-t-lg">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-rose-500/90" />
-              <span className="h-2.5 w-2.5 rounded-full bg-amber-500/90" />
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/90" />
+    <div className="w-full [perspective:1600px]">
+      <div className="group relative mx-auto transition-all duration-700 ease-out [transform:rotateX(8deg)] hover:[transform:rotateX(0deg)] hover:scale-[1.03]">
+        {/* Lid: aluminium shell + dark bezel */}
+        <div className="rounded-t-[14px] bg-gradient-to-b from-slate-500 to-slate-700 p-[3px] shadow-[0_22px_45px_-12px_rgba(0,0,0,0.65)]">
+          <div className="relative rounded-t-[12px] bg-[#0b0b0d] px-[10px] pb-[10px] pt-[18px]">
+            {/* Camera notch */}
+            <div className="absolute left-1/2 top-0 h-[16px] w-[110px] -translate-x-1/2 rounded-b-[8px] bg-[#0b0b0d]">
+              <span className="absolute left-1/2 top-[5px] h-[4px] w-[4px] -translate-x-1/2 rounded-full bg-slate-700 ring-1 ring-slate-600/60" />
             </div>
-            <span className="font-mono text-[10px] text-slate-400">cloud.aws.amazon.com/console</span>
-            <div className="w-6" />
-          </div>
 
-          {/* Screen Display */}
-          <div className="relative aspect-[16/10] overflow-hidden rounded-b-lg bg-card">
-            <Image
-              src={project.image}
-              alt={`${project.title} screenshot`}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                <CheckCircle className="h-3.5 w-3.5" /> Production Ready
-              </span>
+            {/* Display */}
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[4px] bg-card">
+              {/* Browser chrome */}
+              <div className="absolute inset-x-0 top-0 z-10 flex items-center gap-2 bg-slate-900/95 px-2.5 py-1.5 backdrop-blur">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                  <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                </div>
+                <span className="mx-auto max-w-[70%] truncate rounded bg-slate-800/80 px-2 py-0.5 font-mono text-[9px] text-slate-400">
+                  {project.browserUrl ?? 'cloud.aws.amazon.com/console'}
+                </span>
+              </div>
+
+              <div className="absolute inset-0 top-[26px]">
+                <ScreenContent project={project} />
+              </div>
+
+              {/* Screen glare */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-br from-white/10 via-transparent to-transparent"
+              />
+
+              <div className="absolute inset-0 z-30 flex items-end bg-gradient-to-t from-slate-950/85 via-transparent to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
+                  <CheckCircle className="h-3.5 w-3.5" /> Production Ready
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Laptop Base */}
+        {/* Base deck: slight outward flare, like a real hinge + wrist rest */}
         <div className="relative">
-          <div className="h-3.5 rounded-b-xl border-x-2 border-b-2 border-slate-700 bg-slate-800 shadow-md" />
-          <div className="mx-auto h-1.5 w-1/3 rounded-b-xl bg-slate-600" />
+          <div className="mx-auto h-[10px] w-[102%] -translate-x-[1%] rounded-b-[10px] bg-gradient-to-b from-slate-400 via-slate-500 to-slate-700 shadow-[0_10px_18px_-6px_rgba(0,0,0,0.6)]" />
+          {/* Trackpad notch */}
+          <div className="mx-auto h-[5px] w-[16%] rounded-b-[7px] bg-gradient-to-b from-slate-600 to-slate-700" />
         </div>
+
+        {/* Contact shadow */}
+        <span
+          aria-hidden
+          className="pointer-events-none mx-auto mt-2 block h-6 w-[85%] rounded-[50%] bg-black/45 blur-xl"
+        />
       </div>
     </div>
   )
@@ -59,12 +100,7 @@ function Tablet3DMockup({ project }: { project: Project }) {
             <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />
           </div>
           <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-card">
-            <Image
-              src={project.image}
-              alt={`${project.title} tablet view`}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+            <ScreenContent project={project} />
           </div>
         </div>
       </div>
@@ -148,11 +184,7 @@ export function Projects() {
                 <div className="grid items-center gap-10 lg:grid-cols-12">
                   {/* Left Mockup with Electric Cloud Offset Background */}
                   <div className={`relative lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div
-                      aria-hidden
-                      className="absolute -inset-2 -z-10 translate-x-3 translate-y-3 rounded-3xl bg-primary/60 dark:bg-primary/40 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5 shadow-xl"
-                    />
-                    <div className="rounded-2xl border border-border/90 bg-card/95 p-4 sm:p-7 shadow-lg">
+                    <div>
                       {project.device === 'tablet' ? (
                         <Tablet3DMockup project={project} />
                       ) : (
@@ -163,9 +195,15 @@ export function Projects() {
                         <span className="rounded-lg bg-primary/15 px-3 py-1 font-mono text-xs font-bold text-primary">
                           {project.title.split('—')[0]}
                         </span>
-                        <div className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground font-bold shadow-md">
-                          <ArrowUpRight className="h-4 w-4 stroke-[3]" />
-                        </div>
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} on GitHub`}
+                          className="grid h-8 w-8 place-items-center rounded-full bg-foreground text-background shadow-md transition-transform hover:scale-110"
+                        >
+                          <GithubIcon className="h-4 w-4" />
+                        </a>
                       </div>
                     </div>
                   </div>

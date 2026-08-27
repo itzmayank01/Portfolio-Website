@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- top face -->
+  <path d="M24 7 L41 16.5 L24 26 L7 16.5 Z" fill="#6ab0e8" />
+  <!-- left face -->
+  <path d="M7 16.5 L24 26 L24 42.5 L7 33 Z" fill="#3f86c9" />
+  <!-- right face -->
+  <path d="M24 26 L41 16.5 L41 33 L24 42.5 Z" fill="#2f6cae" />
+  <!-- ribbing on left face -->
+  <g stroke="#2f6cae" stroke-width="1.1" opacity="0.65">
+    <path d="M11.2 18.85 L11.2 35.35" />
+    <path d="M14.6 20.75 L14.6 37.25" />
+    <path d="M18 22.65 L18 39.15" />
+    <path d="M21.4 24.55 L21.4 41.05" />
+  </g>
+  <!-- ribbing on right face -->
+  <g stroke="#245c96" stroke-width="1.1" opacity="0.55">
+    <path d="M27.5 24.6 L27.5 41.1" />
+    <path d="M37.5 19 L37.5 35.5" />
+  </g>
+  <!-- door locking bars -->
+  <g fill="#cdd6db">
+    <rect x="30.6" y="24.2" width="1.9" height="16.5" rx="0.6" transform="skewY(-0.5)" />
+    <rect x="34.1" y="22.2" width="1.9" height="16.5" rx="0.6" transform="skewY(-0.5)" />
+  </g>
+</svg>

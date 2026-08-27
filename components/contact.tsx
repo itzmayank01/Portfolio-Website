@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, Phone } from 'lucide-react'
+import { ArrowUpRight, Mail, BadgeCheck } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 import { Reveal } from '@/components/reveal'
 import { ContactForm } from '@/components/contact-form'
@@ -79,14 +79,16 @@ export function Contact() {
 
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <a
-                    href={`tel:${profile.phone.replace(/\s/g, '')}`}
+                    href={profile.credly}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 transition-colors hover:border-primary/50 hover:bg-slate-900"
                   >
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary">
-                      <Phone className="h-4 w-4" />
+                      <BadgeCheck className="h-4 w-4" />
                     </span>
                     <span className="truncate text-sm font-semibold text-white">
-                      {profile.phone}
+                      Credly
                     </span>
                   </a>
                   <a

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 32" fill="none">
+  <!-- left loop (blue) -->
+  <circle cx="19" cy="16" r="10.5" stroke="#5b9bd5" stroke-width="6.5" fill="none" />
+  <!-- right loop (orange) drawn on top so the crossing weaves like the DevOps ∞ -->
+  <circle cx="41" cy="16" r="10.5" stroke="#f5a623" stroke-width="6.5" fill="none" />
+  <!-- darker blue accent on the lower-left to echo the TEST segment -->
+  <path d="M9.5 20.5 A10.5 10.5 0 0 0 24 24.5" stroke="#2e5fab" stroke-width="6.5" stroke-linecap="round" fill="none" />
+</svg>

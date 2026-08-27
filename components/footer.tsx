@@ -1,10 +1,14 @@
 'use client'
 
+import Image from 'next/image'
 import { Globe, ArrowUpRight, Shield, Heart } from 'lucide-react'
 import { profile } from '@/lib/site-data'
 import { AwsIcon, GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 
-const FOOTER_COLUMNS = [
+type FooterLink = { label: string; href: string; external?: boolean }
+type FooterColumn = { title: string; links: FooterLink[] }
+
+const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: 'Expertise',
     links: [
@@ -38,7 +42,7 @@ const FOOTER_COLUMNS = [
       { label: 'LinkedIn Profile', href: profile.linkedin, external: true },
       { label: 'GitHub Repositories', href: profile.github, external: true },
       { label: `Email: ${profile.email}`, href: `mailto:${profile.email}`, external: true },
-      { label: `Phone: ${profile.phone}`, href: `tel:${profile.phone}`, external: true },
+      { label: 'Credly Badges', href: profile.credly, external: true },
     ],
   },
 ]
@@ -50,8 +54,8 @@ export function Footer() {
         {/* Top CTA Row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-12 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-slate-950 font-mono text-sm font-black">
-              MT
+            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-700">
+              <Image src="/mayank.png" alt={profile.name} fill sizes="40px" className="object-cover" />
             </span>
             <div>
               <p className="font-display text-lg font-bold text-white">{profile.name}</p>

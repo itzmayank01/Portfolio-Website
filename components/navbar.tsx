@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { navLinks, profile } from '@/lib/site-data'
@@ -21,7 +22,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
         className={cn(
-          'flex w-full max-w-5xl items-center justify-between rounded-full border px-3 py-2 pl-5 transition-all duration-300',
+          'flex w-full max-w-6xl items-center justify-between rounded-full border px-3 py-2 pl-5 transition-all duration-300',
           scrolled
             ? 'border-border bg-background/80 shadow-sm backdrop-blur-lg'
             : 'border-transparent bg-transparent',
@@ -31,13 +32,13 @@ export function Navbar() {
           href="#top"
           className="flex items-center gap-2 font-display text-sm font-bold tracking-tight"
         >
-          <span className="grid h-7 w-7 place-items-center rounded-md bg-primary font-mono text-xs text-primary-foreground">
-            MT
+          <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border">
+            <Image src="/mayank.png" alt={profile.name} fill sizes="28px" className="object-cover" />
           </span>
           <span className="hidden sm:inline">{profile.name}</span>
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -63,7 +64,7 @@ export function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="grid h-9 w-9 place-items-center rounded-full border border-border text-foreground md:hidden"
+            className="grid h-9 w-9 place-items-center rounded-full border border-border text-foreground lg:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -71,7 +72,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="absolute inset-x-4 top-20 rounded-2xl border border-border bg-background/95 p-3 shadow-lg backdrop-blur-lg md:hidden">
+        <div className="absolute inset-x-4 top-20 rounded-2xl border border-border bg-background/95 p-3 shadow-lg backdrop-blur-lg lg:hidden">
           <ul className="flex flex-col">
             {navLinks.map((link) => (
               <li key={link.href}>

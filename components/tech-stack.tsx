@@ -1,19 +1,17 @@
 'use client'
 
-import type { ComponentType, SVGProps } from 'react'
-import { Cloud, Boxes, GitBranch, Shield, Terminal, CheckCircle2 } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 
 type TechItem = {
   name: string
   tag: string
   logo?: string
-  icon?: ComponentType<SVGProps<SVGSVGElement>>
 }
 
 type TechCategory = {
   category: string
-  icon: ComponentType<SVGProps<SVGSVGElement>>
+  emoji?: string
+  logo?: string
   color: string
   borderColor: string
   items: TechItem[]
@@ -22,7 +20,7 @@ type TechCategory = {
 const TECH_CATEGORIES: TechCategory[] = [
   {
     category: 'Cloud & Infrastructure',
-    icon: Cloud,
+    emoji: '☁️',
     color: 'from-amber-500/20 to-orange-500/10',
     borderColor: 'group-hover:border-amber-500/50',
     items: [
@@ -34,7 +32,7 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     category: 'Containers & Orchestration',
-    icon: Boxes,
+    logo: '/logos/container.svg',
     color: 'from-sky-500/20 to-blue-500/10',
     borderColor: 'group-hover:border-sky-500/50',
     items: [
@@ -46,19 +44,19 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     category: 'CI/CD & DevSecOps',
-    icon: GitBranch,
+    logo: '/logos/devops-loop.svg',
     color: 'from-emerald-500/20 to-teal-500/10',
     borderColor: 'group-hover:border-emerald-500/50',
     items: [
       { name: 'GitHub Actions', tag: 'Automated', logo: '/logos/github.svg' },
       { name: 'Jenkins Pipelines', tag: 'CI/CD', logo: '/logos/jenkins.svg' },
-      { name: 'Trivy & Snyk', tag: 'Security', icon: Shield },
-      { name: 'SonarQube Quality', tag: 'Static Code', icon: CheckCircle2 },
+      { name: 'Trivy & Snyk', tag: 'Security', logo: '/logos/trivy.svg' },
+      { name: 'SonarQube Quality', tag: 'Static Code', logo: '/logos/sonarqube.svg' },
     ],
   },
   {
     category: 'Observability & Code',
-    icon: Terminal,
+    logo: '/logos/observability.svg',
     color: 'from-purple-500/20 to-indigo-500/10',
     borderColor: 'group-hover:border-purple-500/50',
     items: [
@@ -86,7 +84,6 @@ export function TechStack() {
         {/* Categories Grid */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {TECH_CATEGORIES.map((cat, i) => {
-            const HeaderIcon = cat.icon
             return (
               <Reveal
                 key={cat.category}
@@ -101,8 +98,19 @@ export function TechStack() {
 
                 {/* Section Header */}
                 <div className="relative flex items-center gap-3 border-b border-border/60 pb-5">
-                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary/90 text-primary shadow-inner">
-                    <HeaderIcon className="h-5 w-5" />
+                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary/90 shadow-inner text-xl leading-none">
+                    {cat.logo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={cat.logo}
+                        alt={`${cat.category} icon`}
+                        width={28}
+                        height={28}
+                        className="h-7 w-7 object-contain"
+                      />
+                    ) : (
+                      <span aria-hidden>{cat.emoji}</span>
+                    )}
                   </div>
                   <div>
                     <h3 className="font-display text-lg sm:text-xl font-bold text-foreground">
@@ -115,7 +123,6 @@ export function TechStack() {
                 {/* Items */}
                 <div className="relative mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {cat.items.map((item) => {
-                    const ItemIcon = item.icon
                     return (
                       <div
                         key={item.name}
@@ -133,8 +140,6 @@ export function TechStack() {
                                 className="h-4 w-4 object-contain"
                                 loading="lazy"
                               />
-                            ) : ItemIcon ? (
-                              <ItemIcon className="h-4 w-4 text-primary" />
                             ) : null}
                           </span>
                           <span className="text-xs font-bold text-foreground">{item.name}</span>

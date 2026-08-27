@@ -4,10 +4,10 @@ export const profile = {
   tagline: 'Building reliable, secure and automated cloud infrastructure.',
   location: 'Dehradun, India',
   email: 'mayankthakur9181@gmail.com',
-  phone: '+91 90151 56775',
   linkedin: 'https://linkedin.com/in/mayankthakur1',
   github: 'https://github.com/itzmayank01',
-  photo: '/profile.jpg',
+  credly: 'https://www.credly.com/users/mayank-thakur.68a2ad09',
+  photo: '/mayank.png',
   headshot: '/mayank.png',
   summary:
     'I design and automate end-to-end delivery pipelines — from containerized builds and infrastructure-as-code to security scanning and production observability. AWS Certified Solutions Architect focused on shipping fast without breaking things.',
@@ -19,7 +19,7 @@ export const social = {
   linkedinFollowers: '20K+',
   linkedinFollowersLabel: 'engineers following',
   resumePath: '/resume/Mayank-Thakur-Resume.pdf',
-  jacketImage: '/images/aws-golden-jacket.svg',
+  jacketImage: '/images/IMG_6451.png',
 }
 
 export const stats = [
@@ -133,23 +133,38 @@ export type Project = {
   category: string
   status: string
   description: string
-  image: string
+  // Omitted when there is no product screenshot yet — the card falls back to a
+  // GitHub-marked panel instead of a placeholder image.
+  image?: string
   device: 'laptop' | 'tablet'
+  browserUrl?: string
   tech: string[]
   link: string
 }
 
 export const projects: Project[] = [
   {
+    title: 'WhichCloud — Cloud Architecture Synthesis',
+    category: 'Cloud Platform',
+    status: 'In Development',
+    description:
+      'A constraint-driven, LLM-augmented framework that turns a plain-English app description into 2–3 cost-optimal cloud architectures — with real Infracost pricing, a generated architecture diagram, and deployable Terraform.',
+    image: '/projects/whichcloud.png',
+    device: 'laptop',
+    browserUrl: 'github.com/itzmayank01/WhichCloud',
+    tech: ['FastAPI', 'Next.js', 'Terraform', 'Infracost', 'PostgreSQL', 'Redis'],
+    link: 'https://github.com/itzmayank01/WhichCloud',
+  },
+  {
     title: 'Cloud-Native 3-Tier App on AWS EKS',
     category: 'Kubernetes · DevSecOps',
     status: 'Open Source',
     description:
       'End-to-end CI/CD on Amazon EKS with GitHub Actions — automated build, security scanning and production deploy on every merge. Cut pipeline time by 50% with self-hosted runners.',
-    image: '/projects/eks-pipeline.png',
     device: 'laptop',
+    browserUrl: 'github.com/itzmayank01',
     tech: ['AWS EKS', 'GitHub Actions', 'Trivy', 'SonarQube', 'ALB', 'Route 53'],
-    link: 'https://github.com/itzmayank01',
+    link: 'https://github.com/itzmayank01/3-tier-user-platform-devops',
   },
   {
     title: 'Campus Connect — Academic Platform',
@@ -157,8 +172,9 @@ export const projects: Project[] = [
     status: 'Live',
     description:
       'A cloud-based academic platform serving 500+ users at 99.9% uptime. Provisioned with Terraform and monitored with Prometheus & Grafana for reproducible, observable deployments.',
-    image: '/projects/campus-connect.png',
-    device: 'tablet',
+    image: '/projects/campus-connect.jpg',
+    device: 'laptop',
+    browserUrl: 'campusconnect.app',
     tech: ['Terraform', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana', 'PostgreSQL'],
     link: 'https://github.com/itzmayank01',
   },
@@ -168,8 +184,8 @@ export const projects: Project[] = [
     status: 'Case Study',
     description:
       'Reusable Terraform modules provisioning EC2, S3, IAM and VPC across environments, with CloudWatch observability baked in — reducing manual provisioning effort by 60%.',
-    image: '/projects/aws-infra.png',
     device: 'laptop',
+    browserUrl: 'github.com/itzmayank01',
     tech: ['Terraform', 'AWS', 'CloudWatch', 'Jenkins', 'IAM'],
     link: 'https://github.com/itzmayank01',
   },
@@ -179,7 +195,7 @@ export const certifications = [
   {
     title: 'AWS Certified Solutions Architect — Associate',
     issuer: 'Amazon Web Services',
-    image: '/badges/aws-solutions-architect-associate.png',
+    image: '/aws-badges/solutions-architect-associate.png',
   },
   {
     title: 'Google Cloud Certified — Associate Cloud Engineer',
@@ -189,12 +205,12 @@ export const certifications = [
   {
     title: 'AWS Certified Cloud Practitioner',
     issuer: 'Amazon Web Services',
-    image: '/badges/aws-cloud-practitioner.png',
+    image: '/aws-badges/cloud-practitioner.png',
   },
   {
     title: 'AWS Certified AI Practitioner',
     issuer: 'Amazon Web Services',
-    image: '/badges/aws-ai-practitioner.png',
+    image: '/aws-badges/ai-practitioner.png',
   },
 ]
 

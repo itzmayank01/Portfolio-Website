@@ -22,13 +22,13 @@ export default function Home() {
       <main>
         <Hero />
         <GithubActivity />
+        <AwsCertifications />
         <TechMarquee />
         <About />
         <TechStack />
         <Projects />
         <ExperienceSection />
         <Certifications />
-        <AwsCertifications />
         <AwsFeedback />
         <SocialCta />
         <Contact />

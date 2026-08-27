@@ -5,14 +5,7 @@ export type Certification = {
   tier: CertTier
   url: string
   earned: boolean
-}
-
-// Tier gradients (top -> bottom), used as the hexagon fill.
-export const TIER_GRADIENTS: Record<CertTier, { from: string; to: string }> = {
-  Foundational: { from: '#4B5563', to: '#1F2937' },
-  Associate: { from: '#2563EB', to: '#1E40AF' },
-  Professional: { from: '#0EA5B7', to: '#0E7490' },
-  Specialty: { from: '#7C3AED', to: '#4C1D95' },
+  image: string
 }
 
 // All 12 current AWS certifications. `earned: true` for exactly the three held.
@@ -23,12 +16,14 @@ export const certifications: Certification[] = [
     tier: 'Foundational',
     url: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
     earned: true,
+    image: '/aws-badges/cloud-practitioner.png',
   },
   {
     name: 'AWS Certified AI Practitioner',
     tier: 'Foundational',
     url: 'https://aws.amazon.com/certification/certified-ai-practitioner/',
     earned: true,
+    image: '/aws-badges/ai-practitioner.png',
   },
   // Associate
   {
@@ -36,30 +31,35 @@ export const certifications: Certification[] = [
     tier: 'Associate',
     url: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/',
     earned: true,
+    image: '/aws-badges/solutions-architect-associate.png',
   },
   {
     name: 'AWS Certified Machine Learning Engineer – Associate',
     tier: 'Associate',
     url: 'https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/',
     earned: false,
+    image: '/aws-badges/machine-learning-engineer-associate.png',
   },
   {
     name: 'AWS Certified CloudOps Engineer – Associate',
     tier: 'Associate',
     url: 'https://aws.amazon.com/certification/certified-cloudops-engineer-associate/',
     earned: false,
+    image: '/aws-badges/cloudops-engineer-associate.png',
   },
   {
     name: 'AWS Certified Developer – Associate',
     tier: 'Associate',
     url: 'https://aws.amazon.com/certification/certified-developer-associate/',
     earned: false,
+    image: '/aws-badges/developer-associate.png',
   },
   {
     name: 'AWS Certified Data Engineer – Associate',
     tier: 'Associate',
     url: 'https://aws.amazon.com/certification/certified-data-engineer-associate/',
     earned: false,
+    image: '/aws-badges/data-engineer-associate.png',
   },
   // Professional
   {
@@ -67,12 +67,14 @@ export const certifications: Certification[] = [
     tier: 'Professional',
     url: 'https://aws.amazon.com/certification/certified-devops-engineer-professional/',
     earned: false,
+    image: '/aws-badges/devops-engineer-professional.png',
   },
   {
     name: 'AWS Certified Solutions Architect – Professional',
     tier: 'Professional',
     url: 'https://aws.amazon.com/certification/certified-solutions-architect-professional/',
     earned: false,
+    image: '/aws-badges/solutions-architect-professional.png',
   },
   // Specialty
   {
@@ -80,18 +82,21 @@ export const certifications: Certification[] = [
     tier: 'Specialty',
     url: 'https://aws.amazon.com/certification/certified-machine-learning-specialty/',
     earned: false,
+    image: '/aws-badges/machine-learning-specialty.png',
   },
   {
     name: 'AWS Certified Advanced Networking – Specialty',
     tier: 'Specialty',
     url: 'https://aws.amazon.com/certification/certified-advanced-networking-specialty/',
     earned: false,
+    image: '/aws-badges/advanced-networking-specialty.png',
   },
   {
     name: 'AWS Certified Security – Specialty',
     tier: 'Specialty',
     url: 'https://aws.amazon.com/certification/certified-security-specialty/',
     earned: false,
+    image: '/aws-badges/security-specialty.png',
   },
 ]
 
