@@ -190,9 +190,9 @@ export const projects: Project[] = [
       'Reusable Terraform modules provisioning EC2, S3, IAM and VPC across environments, with CloudWatch observability baked in — reducing manual provisioning effort by 60%.',
     image: '/projects/aws-architecture.png',
     device: 'laptop',
-    browserUrl: 'github.com/itzmayank01',
+    browserUrl: 'github.com/aws-samples/generative-ai-applications-foundational-architecture',
     tech: ['Terraform', 'AWS', 'CloudWatch', 'Jenkins', 'IAM'],
-    link: 'https://github.com/itzmayank01',
+    link: 'https://github.com/aws-samples/generative-ai-applications-foundational-architecture',
   },
 ]
 

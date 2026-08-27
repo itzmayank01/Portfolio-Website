@@ -36,9 +36,6 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          # Turn on GitHub Pages (Actions source) automatically on first run.
-          enablement: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { ArrowUpRight, MapPin, FileText } from 'lucide-react'
-import { GithubIcon } from '@/components/brand-icons'
-import { profile, social } from '@/lib/site-data'
+import { ArrowUpRight, MapPin } from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
+import { profile } from '@/lib/site-data'
 import { withBasePath } from '@/lib/base-path'
 import { ContactButtons } from '@/components/contact-buttons'
 
@@ -75,12 +75,13 @@ export function Hero() {
               GitHub
             </a>
             <a
-              href={withBasePath(social.resumePath)}
-              download
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-medium transition-colors hover:text-foreground"
             >
-              <FileText className="h-4 w-4" />
-              Resume
+              <LinkedinIcon className="h-4 w-4" />
+              LinkedIn
             </a>
           </div>
         </div>

@@ -73,10 +73,10 @@ export function ContactButtons({ className = '' }: { className?: string }) {
       <a
         href={withBasePath(social.resumePath)}
         download
-        aria-label="Download Mayank Thakur's CV as PDF"
+        aria-label="Download Mayank Thakur's resume as PDF"
         className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-transparent px-7 py-3.5 text-sm font-bold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto"
       >
-        <span>Download CV</span>
+        <span>Resume</span>
         <Download className="h-4 w-4 stroke-[2.5]" />
       </a>
     </div>
