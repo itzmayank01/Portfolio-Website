@@ -140,6 +140,9 @@ export type Project = {
   browserUrl?: string
   tech: string[]
   link: string
+  // Live deployment URL. When set, the card's "Live" link points here;
+  // otherwise it falls back to `link` (the source repo).
+  liveUrl?: string
 }
 
 export const projects: Project[] = [
@@ -174,9 +177,10 @@ export const projects: Project[] = [
       'A cloud-based academic platform serving 500+ users at 99.9% uptime. Provisioned with Terraform and monitored with Prometheus & Grafana for reproducible, observable deployments.',
     image: '/projects/campus-connect.jpg',
     device: 'laptop',
-    browserUrl: 'campusconnect.app',
+    browserUrl: 'campus-connect-three-liart.vercel.app',
     tech: ['Terraform', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana', 'PostgreSQL'],
     link: 'https://github.com/itzmayank01',
+    liveUrl: 'https://campus-connect-three-liart.vercel.app/',
   },
   {
     title: 'AWS Infrastructure Automation',
@@ -184,6 +188,7 @@ export const projects: Project[] = [
     status: 'Case Study',
     description:
       'Reusable Terraform modules provisioning EC2, S3, IAM and VPC across environments, with CloudWatch observability baked in — reducing manual provisioning effort by 60%.',
+    image: '/projects/aws-architecture.png',
     device: 'laptop',
     browserUrl: 'github.com/itzmayank01',
     tech: ['Terraform', 'AWS', 'CloudWatch', 'Jenkins', 'IAM'],

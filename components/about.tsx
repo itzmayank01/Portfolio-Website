@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { GraduationCap, ShieldCheck, Zap, Cloud, Award } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { profile, stats, education } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 
 export function About() {
   return (
@@ -16,7 +17,7 @@ export function About() {
             />
             <div className="hover-lift relative overflow-hidden rounded-3xl border-2 border-border/80 bg-card p-3 shadow-2xl">
               <Image
-                src={profile.headshot}
+                src={withBasePath(profile.headshot)}
                 alt={`${profile.name} — DevOps and Cloud Engineer`}
                 width={480}
                 height={480}

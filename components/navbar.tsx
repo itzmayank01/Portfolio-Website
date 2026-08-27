@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { navLinks, profile } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
@@ -33,7 +34,7 @@ export function Navbar() {
           className="flex items-center gap-2 font-display text-sm font-bold tracking-tight"
         >
           <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border">
-            <Image src="/mayank.png" alt={profile.name} fill sizes="28px" className="object-cover" />
+            <Image src={withBasePath('/mayank.png')} alt={profile.name} fill sizes="28px" className="object-cover" />
           </span>
           <span className="hidden sm:inline">{profile.name}</span>
         </a>

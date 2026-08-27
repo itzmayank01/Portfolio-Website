@@ -1,6 +1,7 @@
 'use client'
 
 import { Reveal } from '@/components/reveal'
+import { withBasePath } from '@/lib/base-path'
 
 type TechItem = {
   name: string
@@ -102,7 +103,7 @@ export function TechStack() {
                     {cat.logo ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={cat.logo}
+                        src={withBasePath(cat.logo)}
                         alt={`${cat.category} icon`}
                         width={28}
                         height={28}
@@ -133,7 +134,7 @@ export function TechStack() {
                             {item.logo ? (
                               // eslint-disable-next-line @next/next/no-img-element
                               <img
-                                src={item.logo}
+                                src={withBasePath(item.logo)}
                                 alt={`${item.name} logo`}
                                 width={16}
                                 height={16}

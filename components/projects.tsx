@@ -6,6 +6,7 @@ import { ArrowUpRight, ExternalLink, Layers, Cpu, CheckCircle } from 'lucide-rea
 import { Reveal } from '@/components/reveal'
 import { GithubIcon } from '@/components/brand-icons'
 import { projects, profile, type Project } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 
 function ScreenContent({ project }: { project: Project }) {
   if (!project.image) {
@@ -21,7 +22,7 @@ function ScreenContent({ project }: { project: Project }) {
 
   return (
     <Image
-      src={project.image}
+      src={withBasePath(project.image)}
       alt={`${project.title} screenshot`}
       fill
       className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -251,12 +252,12 @@ export function Projects() {
                         <span>Source Code</span>
                       </a>
                       <a
-                        href={project.link}
+                        href={project.liveUrl ?? project.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
                       >
-                        <span>Live Architecture</span>
+                        <span>{project.liveUrl ? 'Live Site' : 'Live Architecture'}</span>
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </div>

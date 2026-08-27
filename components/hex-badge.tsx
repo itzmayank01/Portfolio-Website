@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Check } from 'lucide-react'
 import { type Certification } from '@/lib/certifications'
+import { withBasePath } from '@/lib/base-path'
 
 export function HexBadge({ cert }: { cert: Certification }) {
   const earned = cert.earned
@@ -16,7 +17,7 @@ export function HexBadge({ cert }: { cert: Certification }) {
     >
       <span className="relative block aspect-square w-full max-w-[132px]">
         <Image
-          src={cert.image}
+          src={withBasePath(cert.image)}
           alt={cert.name}
           fill
           sizes="132px"

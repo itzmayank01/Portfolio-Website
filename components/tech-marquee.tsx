@@ -1,4 +1,5 @@
 import { marqueeTech } from '@/lib/logos'
+import { withBasePath } from '@/lib/base-path'
 
 function LogoTrack({ hidden = false }: { hidden?: boolean }) {
   const items = [...marqueeTech, ...marqueeTech]
@@ -15,7 +16,7 @@ function LogoTrack({ hidden = false }: { hidden?: boolean }) {
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-white shadow-sm ring-1 ring-black/5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={tech.logo}
+              src={withBasePath(tech.logo)}
               alt={`${tech.name} logo`}
               width={20}
               height={20}

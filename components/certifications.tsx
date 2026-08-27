@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { BadgeCheck, ExternalLink } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { certifications } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 
 export function Certifications() {
   return (
@@ -28,7 +29,7 @@ export function Certifications() {
               >
                 <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-card border border-border/50 p-1 flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
                   <Image
-                    src={cert.image}
+                    src={withBasePath(cert.image)}
                     alt={cert.title}
                     width={48}
                     height={48}

@@ -82,15 +82,18 @@ export function GithubActivity() {
 
   useEffect(() => {
     let cancelled = false
-    fetch('/api/github-contributions')
+    // Fetch the public contributions API directly from the browser (it sends
+    // Access-Control-Allow-Origin: *), so the live graph works on static hosts
+    // like GitHub Pages with no server route.
+    fetch(`https://github-contributions-api.jogruber.de/v4/${handle}?y=last`)
       .then((res) => {
         if (!res.ok) throw new Error(`status ${res.status}`)
         return res.json()
       })
-      .then((data: { total: number; contributions: Day[] }) => {
+      .then((data: { total?: Record<string, number>; contributions?: Day[] }) => {
         if (cancelled) return
         setDays(data.contributions ?? [])
-        setTotal(data.total ?? 0)
+        setTotal(data.total?.lastYear ?? 0)
       })
       .catch(() => {
         if (!cancelled) setFailed(true)

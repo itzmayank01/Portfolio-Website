@@ -1,9 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { ArrowUpRight, MapPin } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
-import { profile } from '@/lib/site-data'
+import { ArrowUpRight, MapPin, FileText } from 'lucide-react'
+import { GithubIcon } from '@/components/brand-icons'
+import { profile, social } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 
 export function Hero() {
   return (
@@ -73,13 +74,12 @@ export function Hero() {
               GitHub
             </a>
             <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={withBasePath(social.resumePath)}
+              download
               className="inline-flex items-center gap-1.5 font-medium transition-colors hover:text-foreground"
             >
-              <LinkedinIcon className="h-4 w-4" />
-              LinkedIn
+              <FileText className="h-4 w-4" />
+              Resume
             </a>
           </div>
         </div>
@@ -101,7 +101,7 @@ export function Hero() {
             {/* Profile Image Cutout */}
             <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] border-2 border-primary/30 bg-gradient-to-b from-transparent via-card/20 to-card shadow-2xl">
               <Image
-                src={profile.photo}
+                src={withBasePath(profile.photo)}
                 alt={`${profile.name} portrait`}
                 fill
                 priority

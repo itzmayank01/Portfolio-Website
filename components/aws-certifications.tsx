@@ -6,6 +6,7 @@ import { BadgeCheck } from 'lucide-react'
 import { HexBadge } from '@/components/hex-badge'
 import { certifications, earnedCount, totalCount } from '@/lib/certifications'
 import { social } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 
 const PROGRESS = Math.round((earnedCount / totalCount) * 100) // 25
 
@@ -54,7 +55,7 @@ export function AwsCertifications() {
           <div className="relative z-10 flex flex-col items-center">
             <div className="relative w-full max-w-[280px]">
               <Image
-                src={social.jacketImage}
+                src={withBasePath(social.jacketImage)}
                 alt="AWS golden jacket — awarded for holding all current AWS certifications"
                 width={640}
                 height={800}

@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { Globe, ArrowUpRight, Shield, Heart } from 'lucide-react'
 import { profile } from '@/lib/site-data'
+import { withBasePath } from '@/lib/base-path'
 import { AwsIcon, GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 
 type FooterLink = { label: string; href: string; external?: boolean }
@@ -55,7 +56,7 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-12 border-b border-slate-800">
           <div className="flex items-center gap-3">
             <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-700">
-              <Image src="/mayank.png" alt={profile.name} fill sizes="40px" className="object-cover" />
+              <Image src={withBasePath('/mayank.png')} alt={profile.name} fill sizes="40px" className="object-cover" />
             </span>
             <div>
               <p className="font-display text-lg font-bold text-white">{profile.name}</p>
