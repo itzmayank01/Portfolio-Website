@@ -8,7 +8,7 @@ export type Certification = {
   image: string
 }
 
-// All 12 current AWS certifications. `earned: true` for exactly the three held.
+// All 12 current AWS certifications. `earned: true` for exactly the ones held.
 export const certifications: Certification[] = [
   // Foundational
   {
@@ -51,7 +51,7 @@ export const certifications: Certification[] = [
     name: 'AWS Certified Developer – Associate',
     tier: 'Associate',
     url: 'https://aws.amazon.com/certification/certified-developer-associate/',
-    earned: false,
+    earned: true,
     image: '/aws-badges/developer-associate.png',
   },
   {
