@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ArrowUpRight, ExternalLink, Layers, Cpu, CheckCircle } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
@@ -8,18 +8,29 @@ import { GithubIcon } from '@/components/brand-icons'
 import { projects, profile, type Project } from '@/lib/site-data'
 import { withBasePath } from '@/lib/base-path'
 
-function ScreenContent({ project }: { project: Project }) {
-  const gallery = project.images && project.images.length > 0 ? project.images : project.image ? [project.image] : []
+function useImageCycle(length: number, intervalMs = 3000) {
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
-    if (gallery.length < 2) return
+    if (length < 2) return
     const id = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % gallery.length)
-    }, 3000)
+      setActiveIndex((i) => (i + 1) % length)
+    }, intervalMs)
     return () => clearInterval(id)
-  }, [gallery.length])
+  }, [length, intervalMs])
 
+  return activeIndex
+}
+
+function ScreenContent({
+  project,
+  gallery,
+  activeIndex,
+}: {
+  project: Project
+  gallery: string[]
+  activeIndex: number
+}) {
   if (gallery.length === 0) {
     return (
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0d1117]">
@@ -60,10 +71,41 @@ function ScreenContent({ project }: { project: Project }) {
   )
 }
 
-function Laptop3DMockup({ project }: { project: Project }) {
+const TILT_REST = { rx: 8, ry: 0, scale: 1 }
+
+function Laptop3DMockup({
+  project,
+  gallery,
+  activeIndex,
+}: {
+  project: Project
+  gallery: string[]
+  activeIndex: number
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [tilt, setTilt] = useState(TILT_REST)
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = ref.current?.getBoundingClientRect()
+    if (!rect) return
+    const px = (e.clientX - rect.left) / rect.width
+    const py = (e.clientY - rect.top) / rect.height
+    setTilt({
+      rx: 8 - py * 16,
+      ry: (px - 0.5) * 14,
+      scale: 1.03,
+    })
+  }
+
   return (
     <div className="w-full [perspective:1600px]">
-      <div className="group relative mx-auto transition-all duration-700 ease-out [transform:rotateX(8deg)] hover:[transform:rotateX(0deg)] hover:scale-[1.03]">
+      <div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => setTilt(TILT_REST)}
+        style={{ transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) scale(${tilt.scale})` }}
+        className="group relative mx-auto transition-transform duration-300 ease-out will-change-transform"
+      >
         {/* Lid: aluminium shell + dark bezel */}
         <div className="rounded-t-[14px] bg-gradient-to-b from-slate-500 to-slate-700 p-[3px] shadow-[0_22px_45px_-12px_rgba(0,0,0,0.65)]">
           <div className="relative rounded-t-[12px] bg-[#0b0b0d] px-[10px] pb-[10px] pt-[18px]">
@@ -87,7 +129,7 @@ function Laptop3DMockup({ project }: { project: Project }) {
               </div>
 
               <div className="absolute inset-0 top-[26px]">
-                <ScreenContent project={project} />
+                <ScreenContent project={project} gallery={gallery} activeIndex={activeIndex} />
               </div>
 
               {/* Screen glare */}
@@ -122,7 +164,15 @@ function Laptop3DMockup({ project }: { project: Project }) {
   )
 }
 
-function Tablet3DMockup({ project }: { project: Project }) {
+function Tablet3DMockup({
+  project,
+  gallery,
+  activeIndex,
+}: {
+  project: Project
+  gallery: string[]
+  activeIndex: number
+}) {
   return (
     <div className="w-full [perspective:1400px]">
       <div className="group relative mx-auto max-w-[90%] transition-all duration-700 ease-out [transform:rotateX(6deg)rotateY(10deg)] hover:[transform:rotateX(0deg)rotateY(0deg)] hover:scale-105">
@@ -131,9 +181,58 @@ function Tablet3DMockup({ project }: { project: Project }) {
             <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />
           </div>
           <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-card">
-            <ScreenContent project={project} />
+            <ScreenContent project={project} gallery={gallery} activeIndex={activeIndex} />
           </div>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function ProjectMockup({ project }: { project: Project }) {
+  const gallery = project.images && project.images.length > 0 ? project.images : project.image ? [project.image] : []
+  const captions = project.imageCaptions ?? []
+  const activeIndex = useImageCycle(gallery.length)
+
+  return (
+    <div>
+      {project.device === 'tablet' ? (
+        <Tablet3DMockup project={project} gallery={gallery} activeIndex={activeIndex} />
+      ) : (
+        <Laptop3DMockup project={project} gallery={gallery} activeIndex={activeIndex} />
+      )}
+
+      {/* Synced caption, crossfades with the active screenshot */}
+      {captions.length > 0 && (
+        <div className="relative mt-4 h-5 overflow-hidden">
+          {captions.map((caption, i) => (
+            <p
+              key={caption}
+              className={`absolute inset-0 flex items-center gap-2 font-mono text-xs font-medium text-muted-foreground transition-all duration-500 ${
+                i === activeIndex ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
+              }`}
+            >
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              {caption}
+            </p>
+          ))}
+        </div>
+      )}
+
+      {/* Sub-label badge */}
+      <div className="mt-2 flex items-center justify-between">
+        <span className="rounded-lg bg-primary/15 px-3 py-1 font-mono text-xs font-bold text-primary">
+          {project.title.split('—')[0]}
+        </span>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.title} on GitHub`}
+          className="grid h-8 w-8 place-items-center rounded-full bg-foreground text-background shadow-md transition-transform hover:scale-110"
+        >
+          <GithubIcon className="h-4 w-4" />
+        </a>
       </div>
     </div>
   )
@@ -215,28 +314,7 @@ export function Projects() {
                 <div className="grid items-center gap-10 lg:grid-cols-12">
                   {/* Left Mockup with Electric Cloud Offset Background */}
                   <div className={`relative lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div>
-                      {project.device === 'tablet' ? (
-                        <Tablet3DMockup project={project} />
-                      ) : (
-                        <Laptop3DMockup project={project} />
-                      )}
-                      {/* Sub-label badge */}
-                      <div className="mt-4 flex items-center justify-between">
-                        <span className="rounded-lg bg-primary/15 px-3 py-1 font-mono text-xs font-bold text-primary">
-                          {project.title.split('—')[0]}
-                        </span>
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.title} on GitHub`}
-                          className="grid h-8 w-8 place-items-center rounded-full bg-foreground text-background shadow-md transition-transform hover:scale-110"
-                        >
-                          <GithubIcon className="h-4 w-4" />
-                        </a>
-                      </div>
-                    </div>
+                    <ProjectMockup project={project} />
                   </div>
 
                   {/* Right Content */}

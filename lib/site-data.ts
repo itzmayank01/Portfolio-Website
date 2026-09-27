@@ -139,6 +139,9 @@ export type Project = {
   // Optional set of screenshots to auto-cycle through on the card. When present,
   // takes precedence over the single `image`.
   images?: string[]
+  // Caption shown per entry in `images`, same length/order. Crossfades in sync
+  // with the screenshot it describes.
+  imageCaptions?: string[]
   device: 'laptop' | 'tablet'
   browserUrl?: string
   tech: string[]
@@ -161,6 +164,12 @@ export const projects: Project[] = [
       '/projects/whichcloud-pricing.png',
       '/projects/whichcloud-terraform.png',
       '/projects/whichcloud-architecture.png',
+    ],
+    imageCaptions: [
+      'Describe your app in plain English',
+      'Live pricing across AWS, Azure & GCP',
+      'Terraform generated automatically',
+      'Architecture diagrams, auto-drawn',
     ],
     device: 'laptop',
     browserUrl: 'whichcloud.vercel.app',
