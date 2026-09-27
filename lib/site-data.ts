@@ -136,6 +136,9 @@ export type Project = {
   // Omitted when there is no product screenshot yet — the card falls back to a
   // GitHub-marked panel instead of a placeholder image.
   image?: string
+  // Optional set of screenshots to auto-cycle through on the card. When present,
+  // takes precedence over the single `image`.
+  images?: string[]
   device: 'laptop' | 'tablet'
   browserUrl?: string
   tech: string[]
@@ -149,14 +152,21 @@ export const projects: Project[] = [
   {
     title: 'WhichCloud — Cloud Architecture Synthesis',
     category: 'Cloud Platform',
-    status: 'In Development',
+    status: 'Live',
     description:
       'A constraint-driven, LLM-augmented framework that turns a plain-English app description into 2–3 cost-optimal cloud architectures — with real Infracost pricing, a generated architecture diagram, and deployable Terraform.',
     image: '/projects/whichcloud.png',
+    images: [
+      '/projects/whichcloud-landing.png',
+      '/projects/whichcloud-pricing.png',
+      '/projects/whichcloud-terraform.png',
+      '/projects/whichcloud-architecture.png',
+    ],
     device: 'laptop',
-    browserUrl: 'github.com/itzmayank01/WhichCloud',
+    browserUrl: 'whichcloud.vercel.app',
     tech: ['FastAPI', 'Next.js', 'Terraform', 'Infracost', 'PostgreSQL', 'Redis'],
     link: 'https://github.com/itzmayank01/WhichCloud',
+    liveUrl: 'https://whichcloud.vercel.app/',
   },
   {
     title: 'Cloud-Native 3-Tier App on AWS EKS',

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ArrowUpRight, ExternalLink, Layers, Cpu, CheckCircle } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
@@ -9,7 +9,18 @@ import { projects, profile, type Project } from '@/lib/site-data'
 import { withBasePath } from '@/lib/base-path'
 
 function ScreenContent({ project }: { project: Project }) {
-  if (!project.image) {
+  const gallery = project.images && project.images.length > 0 ? project.images : project.image ? [project.image] : []
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    if (gallery.length < 2) return
+    const id = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % gallery.length)
+    }, 3000)
+    return () => clearInterval(id)
+  }, [gallery.length])
+
+  if (gallery.length === 0) {
     return (
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0d1117]">
         <GithubIcon className="h-14 w-14 text-slate-100" />
@@ -21,12 +32,31 @@ function ScreenContent({ project }: { project: Project }) {
   }
 
   return (
-    <Image
-      src={withBasePath(project.image)}
-      alt={`${project.title} screenshot`}
-      fill
-      className="object-cover transition-transform duration-700 group-hover:scale-105"
-    />
+    <>
+      {gallery.map((src, i) => (
+        <Image
+          key={src}
+          src={withBasePath(src)}
+          alt={`${project.title} screenshot ${i + 1}`}
+          fill
+          className={`object-cover object-top transition-opacity duration-1000 ease-in-out group-hover:scale-105 ${
+            i === activeIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+      {gallery.length > 1 && (
+        <div className="pointer-events-none absolute bottom-3 left-1/2 z-30 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/30 px-2.5 py-1.5 backdrop-blur-sm">
+          {gallery.map((src, i) => (
+            <span
+              key={src}
+              className={`h-1.5 rounded-full shadow-sm transition-all duration-500 ${
+                i === activeIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </>
   )
 }
 
